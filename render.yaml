@@ -1,0 +1,39 @@
+services:
+  - name: next-app
+    type: web
+    env: docker
+    repo: https://github.com/yourusername/your-repo
+    rootDir: next-app
+    dockerfilePath: Dockerfile.dev
+    plan: free
+    envVars:
+      - key: DATABASE_URL
+        value: your_postgres_connection_url
+      - key: REDIS_URL
+        value: redis://default:root@your-redis-host:6379
+      - key: NODE_ENV
+        value: production
+
+  - name: ws
+    type: web
+    env: docker
+    repo: https://github.com/yourusername/your-repo
+    rootDir: ws
+    dockerfilePath: Dockerfile.dev
+    plan: free
+    envVars:
+      - key: DATABASE_URL
+        value: your_postgres_connection_url
+      - key: REDIS_URL
+        value: redis://default:root@your-redis-host:6379
+      - key: NODE_ENV
+        value: production
+
+databases:
+  - name: postgres-db
+    databaseName: muzer
+    user: muzer_admin
+    plan: free
+
+  - name: redis-cache
+    plan: free
