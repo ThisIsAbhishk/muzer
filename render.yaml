@@ -7,12 +7,26 @@ services:
     dockerfilePath: Dockerfile.dev
     plan: free
     envVars:
+      - key: PORT
+        value: 3000
+      - key: GOOGLE_CLIENT_ID
+        value: 129206060906-g2f2ivrus8ktug62kbol515i0smsfbr7.apps.googleusercontent.com
+      - key: GOOGLE_CLIENT_SECRET
+        value: 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
+      - key: NEXTAUTH_SECRET
+        value: ac470fed0b25a97bd2fd4dd790991cfb071e11ff5a9ca543891b94b205db4e85
+      - key: NEXT_PUBLIC_SECRET
+        value: ac470fed0b25a97bd2fd4dd790991cfb071e11ff5a9ca543891b94b205db4e85
+      - key: NEXT_PUBLIC_WSS_URL
+        value: ws://localhost:8080
+      - key: NEXT_PUBLIC_PUBLICKEY
+        value: YOUR_PUBLIC_KEY
+      - key: NEXT_PUBLIC_SOL_PER_PAYMENT
+        value: YOUR_SOL_PER_PAYMENT
       - key: DATABASE_URL
-        value: your_postgres_connection_url
-      - key: REDIS_URL
-        value: redis://default:root@your-redis-host:6379
-      - key: NODE_ENV
-        value: production
+        value: postgresql://muzer_admin:KTbmxco0naFxw5XizoK8ihyEh4OSIAUz@dpg-cvquqveuk2gs73c2iv90-a/muzer_0yzp
+      - key: POSTGRES_PORT
+        value: 5432
 
   - name: ws
     type: web
@@ -22,12 +36,20 @@ services:
     dockerfilePath: Dockerfile.dev
     plan: free
     envVars:
+      - key: PORT
+        value: 8080
+      - key: NEXTAUTH_SECRET
+        value: ac470fed0b25a97bd2fd4dd790991cfb071e11ff5a9ca543891b94b205db4e85
       - key: DATABASE_URL
-        value: your_postgres_connection_url
-      - key: REDIS_URL
-        value: redis://default:root@your-redis-host:6379
-      - key: NODE_ENV
-        value: production
+        value: postgresql://redis_cache_user:P3Lz8GkvPjyZydMcMdAJKABmJSsKAvtO@dpg-cvquqveuk2gs73c2iv4g-a/redis_cache
+      - key: REDIS_USERNAME
+        value: redis_cache_user
+      - key: REDIS_PORT
+        value: 6379
+      - key: REDIS_HOST
+        value: redis
+      - key: REDIS_PASSWORD
+        value: P3Lz8GkvPjyZydMcMdAJKABmJSsKAvtO
 
 databases:
   - name: postgres-db
