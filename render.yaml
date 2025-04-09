@@ -2,7 +2,7 @@ services:
   - name: next-app
     type: web
     env: docker
-    repo: https://github.com/yourusername/your-repo
+    repo: https://github.com/ThisIsAbhishk/muzer
     rootDir: next-app
     dockerfilePath: Dockerfile.dev
     plan: free
@@ -17,7 +17,7 @@ services:
   - name: ws
     type: web
     env: docker
-    repo: https://github.com/yourusername/your-repo
+    repo: https://github.com/ThisIsAbhishk/muzer
     rootDir: ws
     dockerfilePath: Dockerfile.dev
     plan: free
